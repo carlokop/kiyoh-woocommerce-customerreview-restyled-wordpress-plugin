@@ -3,12 +3,12 @@
  * @package kiyoh-customerreview
  */
 /*
-Plugin Name: Kiyoh Customerreview
-Plugin URI: http://www.interactivated.me/
+Plugin Name: Kiyoh Customerreview Modified
+Plugin URI: https://websitediewerkt.nl
 Description: KiyOh.nl-gebruikers kunnen met deze plug-in automatisch klantbeoordelingen verzamelen, publiceren en delen in social media. Wanneer een klant een bestelling heeft gemaakt in uw WooCommerce, wordt een e-mail uitnodiging automatisch na een paar dagen verstuurd om u te beoordelen. De e-mail wordt uit naam en e-mailadres van uw organisatie gestuurd, zodat uw klanten u herkennen. De e-mail tekst is aanpasbaar en bevat een persoonlijke en veilige link naar de pagina om te beoordelen. Vanaf nu worden de beoordelingen dus automatisch verzameld, gepubliceerd en gedeeld. Dat is nog eens handig!
-Version: 1.0.29
-Author: kiyoh
-Author URI: http://www.interactivated.me/webshop-modules/kiyoh-reviews-module-for-woocommerce.html
+Version: 1.0.30
+Author: Website Die Werkt
+Author URI: https://websitediewerkt.nl
 License: GPLv2 or later
 Text Domain: kiyoh-customerreview
 Domain Path: /i18n/languages/
@@ -110,12 +110,11 @@ function check_kiyoh_review($post_id, $post)
 }
 //{"all":{"enable":"Yes","send_method":"kiyoh","connector":"asdf","custom_user":"asdf","email_template_language":"","enable_microdata":false,"company_id":false,"link":"","email":"","delay":"0","event":"Purchase","order_status":["pending","processing","on-hold"],"server":"newkiyoh.com","excule_groups":null,"tmpl_en":"","tmpl_du":"","company_name":"","hash":"c2af1092-78fa-45b0-8764-b7ae263391c0","locationId":"000-dtg-demo-kvtilburg-01","language1":"nl","excule":null},"nl":{"enable":"Yes","link":"","email":"","delay":"0","event":"Purchase","order_status":["pending","processing","on-hold"],"server":"klantenvertellen.nl","excule_groups":null,"tmpl_en":"","tmpl_du":"","excule":null,"company_name":"","send_method":"kiyoh","connector":"asdf","custom_user":"asdf","email_template_language":"","hash":"c2af1092-78fa-45b0-8764-b7ae263391c0","locationId":"000-dtg-demo-kvtilburg-01","language1":"nl"},"en":{"enable":"Yes","link":"","email":"","delay":"0","event":"Orderstatus","order_status":["pending","processing","on-hold"],"server":"klantenvertellen.nl","excule_groups":null,"tmpl_en":"","tmpl_du":"","excule":null,"company_name":"","send_method":"kiyoh","connector":"asdf","custom_user":"asdf","email_template_language":"","hash":"c2af1092-78fa-45b0-8764-b7ae263391c0","locationId":"000-dtg-demo-kvtilburg-01","language1":"EN"}}
 
+add_action('admin_init', 'enqueue_my_scripts');
 function enqueue_my_scripts()
 {
     wp_enqueue_script('kiyoh-script', KIYOH__PLUGIN_URL . 'js/script.js', array('jquery'), '1.0.17');
 }
-
-add_action('admin_init', 'enqueue_my_scripts');
 
 function register_mysettings()
 {
@@ -143,7 +142,7 @@ function register_mysettings()
     //register_setting( 'kiyoh-settings-group', 'kiyoh_option_enable_microdata' );
     //register_setting( 'kiyoh-settings-group', 'kiyoh_option_company_id' );
 }
-add_filter('pre_update_option', 'kiyoh_update_option',10,3);
+add_filter('pre_update_option', 'kiyoh_update_option',10,31);
 
 function kiyoh_create_menu()
 {
@@ -170,7 +169,7 @@ function kiyoh_settings_page()
                     <tr valign="top">
                         <th scope="row"><?php echo __('Module Version', 'kiyoh-customerreview'); ?></th>
                         <td>
-                            <p>1.0.29</p>
+                            <p>1.0.30</p>
                         </td>
                     </tr>
                     <tr valign="top">

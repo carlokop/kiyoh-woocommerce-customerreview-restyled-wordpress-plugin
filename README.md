@@ -1,9 +1,11 @@
 ## Kiyoh customer review
 Requires at least: 3.6.0
-Tested up to: 5.2.2
+Tested up to: 5.4.1
 Stable tag: kiyoh, review, customerreview, rate, send mail
 
 The Interactivated.me developed plugin for the Kiyoh reviews network, you can easily integrate Kiyoh into your Wordpress.
+
+# This plugin is created based on the Kiyoh customer review plugin version 1.0.29
 
 ## Description
 With the newest release of the official Kiyoh reviews plugin you get a complete solution for integrating the most used review network of The Netherlands into your webstore. Gaining popularity rapidly internationally. A full overview of the capabilities of the latest plugin:
@@ -46,3 +48,14 @@ Also see www.kiyoh.nl for more information.
 
 = 1.0.21 =
 * set curl timeout 200ms
+
+## Plugin is redesigned after version 1.0.29
+## Plugin has a new plugin name 
+
+= 1.0.30
+1. HTML templated is modified
+2. Sidebar registered
+3. Shortcode registered -> loads sidebar
+4. Dutch translations added
+5. Starrating uses svg images
+

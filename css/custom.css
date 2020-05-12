@@ -1,0 +1,82 @@
+
+.kv-widget-wrapper {
+    width:600px;
+    max-width:100%;
+    height:auto;
+    position: relative;
+}
+
+.kv-widget-wrapper .left {
+    width:150px;
+    padding-right:2%;
+    float:left;
+    position: relative;
+}
+
+.kv-widget-wrapper .score_container {
+    display: block;
+    background-size: cover;
+    width: 100%;
+    height: auto;
+    position: relative;
+    left: 0;
+    color: #464343;
+    background-repeat: no-repeat !important;
+    background-position: 0 0 !important;
+}
+
+.kv-widget-wrapper .score_container .score {
+    padding: 30px 30px 30px 35px;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.kv-widget-wrapper .starrating ul {
+    list-style: none;  
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding-inline-start: 0;
+    margin-top: 5px;
+}
+
+.kv-widget-wrapper .starrating ul li {
+    display:inline-block;
+    color:#ffba16;
+}
+
+.kv-widget-wrapper .starrating ul li svg {
+    width:15px;
+    height:15px;
+    fill: currentColor;
+}
+
+.kv-widget-wrapper .kiyoh {
+    font-size: 35px;
+    color: #333;
+    margin: 0;
+    padding-top: 18px;
+}
+
+.kv-widget-wrapper .rating {
+    font-size: 16px;
+    color: #000;
+}
+
+/* small version in sidebar or so 
+ * less than 320px */
+  .kv-widget-wrapper.small .row {
+     display:flex;
+     flex-direction: column-reverse;
+ }
+
+ .kv-widget-wrapper.small .left{
+    width:100%;
+    padding-right:0%;
+    margin-top:10px;
+ }
+
+ .kv-widget-wrapper.small .starrating ul {
+    text-align: left;
+    padding-inline-start: 20px;
+}

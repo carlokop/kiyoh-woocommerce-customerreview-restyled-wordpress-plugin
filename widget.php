@@ -33,7 +33,76 @@ class kiyoh_review extends WP_Widget
             ?>
 
             <?php echo $args['before_widget']; ?>
-	        <div class="kiyoh-shop-snippets">
+            
+            <style>
+                /* @import url("<?php echo plugin_dir_url(__FILE__); ?>css/public.css"); */
+                @import url("<?php echo plugin_dir_url(__FILE__); ?>css/custom.css");
+            </style>
+
+
+            <!-- begin -->
+            <div class="kv-widget-wrapper" id="kv-widget" itemprop="itemReviewed" itemscope="" itemtype="https://schema.org/Organization">
+                <meta itemprop="name" content="<?php echo get_bloginfo('name')?>">
+                <meta itemprop="url" content="<?php echo get_bloginfo('url')?>">
+                <div class="row" itemprop="aggregateRating" itemscope="itemscope" itemtype="http://schema.org/AggregateRating">
+                    <meta itemprop="worstRating" content="1">
+                    <meta itemprop="bestRating" content="<?php echo $maxrating; ?>">
+                    <meta itemprop="ratingcount" content="<?php echo $reviews; ?>">
+                    <div class="left">
+                        <div class="score_container" style="background: url(<?php echo plugin_dir_url(__FILE__); ?>img/kv_shape.svg);">
+                            <div class="score"><span itemprop="ratingValue"><?php echo $rating; ?><span></div>
+                        </div>
+
+                        <div class="starrating">
+                            <ul>
+                                <?php 
+                                    $rating = $rating/2;
+                                    for($i=0; $i<5; $i++) {
+                                        echo "<li>";
+                                        echo '<?xml version="1.0" encoding="utf-8"?>';
+                                        echo '<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">';
+                                        echo '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">';
+                                        
+                                        if($rating >= 1) {
+                                            // full star 
+                                            echo '<g><path d="M500,34l151.4,306.8L990,390L745,628.8L802.8,966L500,806.8L197.2,966L255,628.8L10,390l338.6-49.2L500,34z"/><path d="M198.6,963.5l57.5-335.1L12.6,391l336.5-48.9L499.6,37.3v768L198.6,963.5z"/></g>';
+                                        } elseif($rating >= 0.33) {
+                                            //half star
+                                            echo '<g><path d="M803.6,966.7L499.2,825.4L196.4,966.7l41.9-333.9L10,392.1l9.3-4.7c10.9-4.7,257.8-51.3,316.8-62.1c21.7-38.8,155.3-281.1,155.3-281.1l7.8-10.9l163.1,293.5L990,390.5L760.1,634.3L803.6,966.7z M38,399.8l215.9,228.3L215,940.3l284.2-132L785,941.9l-40.4-312.2l215.9-229.9L653,339.3l-1.6-3.1L499.2,64.4c-28,51.3-138.2,250-150.6,271.8l-1.6,3.1h-3.1C236.8,361,83,390.5,38,399.8z"/><path d="M499.2,48.8v767.2L205.7,954.3l40.4-323L24,395.2L342.4,333L499.2,48.8z"/></g>';
+                                        } else {
+                                            //empty star
+                                            echo '<g><g><path d="M990,390l-338.6-49.2L500,34L348.6,340.8L10,390l245,238.8L197.2,966L500,806.8L802.8,966L745,628.8L990,390z M500,731.1L286.1,843.6L327,605.4L154,436.8L393.1,402L500,185.4L606.9,402L846,436.8L673,605.4l40.8,238.1L500,731.1z"/></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></g>';
+                                        }
+                                        $rating--;
+
+                                        echo '</svg>';
+                                        echo "</li>";
+                                    }
+                                ?>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <p class="kiyoh">Kiyoh</p>
+                        <div class="rating" ><?php echo sprintf(__('out of %s, based on', 'kiyoh-customerreview'), $reviews) ?><?php echo __('customer reviews', 'kiyoh-customerreview'); ?></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- einde -->
+
+            <script>
+                //sets small class to small sized widget
+                var kvWidget = document.querySelector("#kv-widget");
+                if(kvWidget.clientWidth < 320) {
+                    kvWidget.classList.add("small");
+                }
+            </script>
+
+
+
+
+	        <!-- <div class="kiyoh-shop-snippets">
                 <div class="rating-box">
                     <div class="rating" style="width:<?php echo $rating_percentage; ?>%"></div>
                 </div>
@@ -53,28 +122,11 @@ class kiyoh_review extends WP_Widget
                         </p>
                     </div>
                 </div>
-            </div>
-            <style>
-                .kiyoh-shop-snippets {
-                    display: inline-block;
-                    font-size: 13px;
-                }
+            </div> -->
+            
 
-                .kiyoh-shop-snippets .rating-box {
-                    float: left;
-                    width: 91px;
-                    background: url('<?php echo $image_dir;?>img/rating-sprite.png') no-repeat 0 -15px;
-                    height: 15px;
-                    margin: 11px 10px 10px 10px;
-                }
 
-                .kiyoh-shop-snippets .rating-box .rating {
-                    height: 15px;
-                    background: url('<?php echo $image_dir;?>img/rating-sprite.png') no-repeat 0 0;
-                    margin: 0;
-                    padding: 0;
-                }
-            </style>
+
 	        <?php echo $args['after_widget']; ?>
         <?php endif;
     }

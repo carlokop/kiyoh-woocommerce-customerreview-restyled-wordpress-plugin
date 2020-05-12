@@ -411,3 +411,25 @@ function kiyoh_update_option($value, $option, $old_value)
     update_option('kiyoh_options', json_encode($translated));
     return $value;
 }
+
+//register dynamic sidebar
+function kiyoh_sidebar() {
+    register_sidebar( array(
+        'name'          => __( 'Kiyoh sidebar', 'kiyoh-customerreview' ),
+        'id'            => 'kiyoh_sidebar',
+        'description'   => __( 'Widgets in this area will be shown on all posts and pages.', 'kiyoh-customerreview' ),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h2 class="widgettitle">',
+        'after_title'   => '</h2>',
+    ) );
+}
+add_action( 'widgets_init', 'kiyoh_sidebar' );
+
+//register shortcode
+function kiyoh_func( $atts ){
+	if ( is_active_sidebar( 'kiyoh_sidebar' ) ) {
+        dynamic_sidebar( 'kiyoh_sidebar' ); 
+    }
+}
+add_shortcode( 'kiyoh_sidebar', 'kiyoh_func' );
